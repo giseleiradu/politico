@@ -22,6 +22,9 @@ router.get(`${entry}`, getAllParties);
 router.post(`${entry}`, createParty);
 router.post('/offices', createParty);
 
+/**** GET THE ENTITY BY ID **********/
+
+router.get(`${entry}/:id`, getParty);
 
 
 export default router;

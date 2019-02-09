@@ -22,10 +22,16 @@ const createParty = (req, res) => {
 const getAllParties = (req, res) => {
   res.send(parties);
 };
-
+const getParty = (req, res) => {
+  const { id } = req.params;
+  const party = parties.find(p => p.id === parseInt(id));
+  if (!party) res.status(404).send('the party with a given id does not exist');
+  res.send(party);
+};
 export {
 
   createParty,
-  getAllParties
+  getAllParties,
+  getParty
 
 };
