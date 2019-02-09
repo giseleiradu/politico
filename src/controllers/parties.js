@@ -19,9 +19,13 @@ const createParty = (req, res) => {
   parties.push(party);
   return res.send(party);
 };
+const getAllParties = (req, res) => {
+  res.send(parties);
+};
 
 export {
 
   createParty,
+  getAllParties
 
 };
