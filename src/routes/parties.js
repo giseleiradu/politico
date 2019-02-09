@@ -13,11 +13,15 @@ import {
 const router = Router();
 const entry = '/parties';
 
+// // /**** GET ALL ENTITIES ***/
+
+router.get(`${entry}`, getAllParties);
 
 // // /**** CREATE THE ENTITY /
 
 router.post(`${entry}`, createParty);
 router.post('/offices', createParty);
+
 
 
 export default router;
