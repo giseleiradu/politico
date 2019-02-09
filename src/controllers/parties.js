@@ -28,10 +28,19 @@ const getParty = (req, res) => {
   if (!party) res.status(404).send('the party with a given id does not exist');
   res.send(party);
 };
+const deleteParty = (req, res) => {
+  const { id } = req.params;
+  const party = parties.find(p => p.id === parseInt(id));
+  if (!party) return res.status(404).send({ message: 'invalid id' });
+  const index = parties.indexOf(party);
+  parties.splice(index, 1);
+  return res.status(200).send(party);
+};
 export {
 
   createParty,
   getAllParties,
-  getParty
+  getParty,
+  deleteParty
 
 };
