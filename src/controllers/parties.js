@@ -43,12 +43,18 @@ const deleteParty = (req, res) => {
   parties.splice(index, 1);
   return res.status(200).send(party);
 };
+const createOffice = () => {
+  const office = { id: offices.length + 1, ...req.body, createdOn: new Date() };
+  parties.push(office);
+  return res.send(office);
+};
 export {
 
   createParty,
   getAllParties,
   getParty,
   deleteParty,
-  updateParty
+  updateParty,
+  createOffice
 
 };
