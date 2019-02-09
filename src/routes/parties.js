@@ -26,5 +26,9 @@ router.post('/offices', createParty);
 
 router.get(`${entry}/:id`, getParty);
 
+// // /**** DELETE THE ENTITY /
+
+router.delete(`${entry}/:id`, deleteParty);
+
 
 export default router;
