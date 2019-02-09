@@ -26,5 +26,8 @@ router.post('/offices', createParty);
 
 router.get(`${entry}/:id`, getParty);
 
+// // /**** UPDATE THE ENTITY /
+
+router.patch(`${entry}/:id`, updateParty);
 
 export default router;
