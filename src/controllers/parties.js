@@ -43,12 +43,15 @@ const deleteParty = (req, res) => {
   parties.splice(index, 1);
   return res.status(200).send(party);
 };
+const getAllOffices = (req, res) => {
+  res.send(offices);
+};
 export {
-
   createParty,
   getAllParties,
   getParty,
   deleteParty,
-  updateParty
+  updateParty,
+  getAllOffices
 
 };
