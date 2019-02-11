@@ -46,12 +46,19 @@ const deleteParty = (req, res) => {
 const getAllOffices = (req, res) => {
   res.send(offices);
 };
+const getOffice = (req, res) => {
+  const { id } = req.params;
+  const office = offices.find(f => f.id === parseInt(id));
+  if (!office) res.status(404).send('the office with a given id does not exist');
+  res.send(office);
+};
 export {
   createParty,
   getAllParties,
   getParty,
   deleteParty,
   updateParty,
-  getAllOffices
+  getAllOffices,
+  getOffice,
 
 };
