@@ -1,0 +1,124 @@
+
+body{
+    padding: 0;
+    margin:0;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/*Header styles*/
+li img{
+    width: 20%;
+    margin: 20px 0px 0px 20px;
+}
+.navbar{
+    display: block;
+    overflow: hidden;
+
+}
+
+ul{
+    list-style-type: none;
+    margin:0%;
+    float: right;
+    padding: 0px;
+}
+
+
+li{
+    float: left;
+    list-style-type: none;
+    margin-bottom: 0px;
+}
+
+
+li a{
+    text-decoration: none;
+    padding: 20px 30px;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+}
+.current{
+    border-bottom: 5px #294C8E solid;
+}
+
+li a:hover{
+    background: #294C8E;
+    color: #ffffff;
+}
+
+/*Section overview*/
+.overview{
+    margin: 0px;
+    padding: 0px;
+}
+.vote1{
+    float: left;
+    width: 50%;
+    text-align: center;
+
+}
+.vote2{
+    float: right;
+    width: 50%;
+}
+.textVote{
+    text-transform: uppercase ;
+    font-size: 25px;
+    font-style: oblique;
+    margin: 20% 10% 5% 10%;
+}
+.vote{
+    font-size: 18px;
+    font-weight: bold;
+}
+.vote a{
+    text-decoration: none;
+    color: black;
+    background: #ffffff;
+    border: #294C8E 2px solid;
+    padding: 10px 30px;
+    border-radius: 8px;
+    
+}
+
+.vote a:hover{
+    background: #294C8E;
+}
+
+.vote2 img{
+    width: 100%;
+}
+
+/*Toogle section*/
+.toggle{
+    width: 80%;
+    overflow: hidden;
+    margin: auto;
+    padding-top: 2%;    
+}
+.toggle_box{
+    width: 31%;
+    float:left;
+    padding: 1%;    
+}
+.toggle_image img{
+    width: 50px;
+    margin-left: 45%;
+}
+.toggle_boldText{
+    text-align: center;
+    font-weight: bold;
+}
+.toggle_text{
+    text-align: center;
+}
+.toggle a{
+    text-decoration: none;
+    color: black;
+    background: red;
+}
+.toggle a:hover{
+   color: rgb(125, 139, 167);
+}
