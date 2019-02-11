@@ -26,6 +26,7 @@ router.post('/offices', createParty);
 /**** GET THE ENTITY BY ID **********/
 
 router.get(`${entry}/:id`, getParty);
+router.get('/offices/:id', getOffice);
 
 // // /**** UPDATE THE ENTITY /
 
