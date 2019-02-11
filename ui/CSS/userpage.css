@@ -1,0 +1,99 @@
+body{
+    padding: 0;
+    margin:0;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/*Header styles*/
+li img{
+    width: 20%;
+    margin: 20px 0px 0px 20px;
+}
+.navbar{
+    display: block;
+    overflow: hidden;
+
+}
+
+ul{
+    list-style-type: none;
+    margin:0%;
+    float: right;
+    padding: 0px;
+}
+
+
+li{
+    float: left;
+    list-style-type: none;
+    margin-bottom: 0px;
+}
+
+
+li a{
+    text-decoration: none;
+    padding: 20px 30px;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+}
+.current{
+    border-bottom: 5px #294C8E solid;
+}
+
+li a:hover{
+    background: #294C8E;
+    color: #ffffff;
+}
+/* choices */
+section{
+    background: #294C8E;
+    padding: 2% 0%;
+}
+.choices{
+    width: 80%;
+    background: #ffffff;
+    margin: auto;
+    border: 1px #ffffff solid;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.text{
+    padding: 4%;
+    font-size: 22px;
+    font-weight: bolder;
+    text-align: center;
+    background: rgb(68, 98, 155);
+    border-radius: 8px 8px 0px 0px;
+    color: #ffffff;
+}
+#candicate{
+    width: 40%;
+    margin: 2% 3.2%;
+    text-align: center;
+    border: rgb(68, 98, 155) 1px solid;
+    border-radius: 8px;
+    float: left;
+    padding: 10px;
+    overflow: hidden;
+}
+#partyname{
+    text-transform: uppercase;
+    font-size: 30px;
+}
+#candicate img{
+    border-radius:50%;
+    border: #294C8E 1px solid;
+}
+#candidatetext{
+    font-style: italic;
+}
+
+
+.vote a{
+    text-transform: uppercase;
+    margin: 45%;
+    padding: 30px 0px;    
+}
+

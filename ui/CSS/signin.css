@@ -1,0 +1,116 @@
+body{
+    padding: 0;
+    margin:0;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+li img{
+    width: 20%;
+    margin: 20px 0px 0px 20px;
+}
+.navbar{
+    display: block;
+    overflow: hidden;
+
+}
+
+ul{
+    list-style-type: none;
+    margin:0%;
+    float: right;
+    padding: 0px;
+}
+
+
+li{
+    float: left;
+    list-style-type: none;
+    margin-bottom: 0px;
+}
+
+
+li a{
+    text-decoration: none;
+    padding: 20px 30px;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+}
+.current{
+    border-bottom: 5px #294C8E solid;
+}
+
+li a:hover{
+    background: #294C8E;
+    color: #ffffff;
+}
+
+/* Section login*/
+.image img{
+    width: 50%;
+    float: left; 
+}
+.voteSignin{
+    width: 50%;
+    float: right;
+    text-align: center;
+    padding: 1.8% 0% 1% 0%;
+    background-image:linear-gradient(to right ,#182478 55%,#ffffff 75%)
+}
+
+
+input{
+    padding-left: 20px;
+    width: 60%;
+    height: 40px;
+    border-radius: 8px;
+    border: rgb(68, 98, 155) 1px solid;
+    font-size: 16px;
+    margin: 10px 0px 20px;
+}
+form{
+    margin-bottom: 20px;
+}
+
+.enter{
+    width: 50%;
+    float: left;
+}
+.enter a,.cancel a{
+    text-decoration: none;
+    color: #000000;
+    padding: 15px 45px;
+    margin-top: 40%;
+    border-radius: 8px;
+}
+.cancel{
+    width: 50%;
+    float: right;
+}
+
+.buttons{
+    text-align: center;
+    margin-top: 4%;
+}
+.enter a{
+    background: #ec4e4e;
+    
+}
+.cancel a{
+    background: #ec4e4e;
+}
+.enter a:hover,.cancel a:hover{
+   background: #e97070;
+}
+
+.signup{
+    margin-top: 10%;
+
+}
+.signup a{
+    color: #ffffff;
+}
+.signup a:hover{
+    color: #6b6969;
+}
