@@ -1,5 +1,6 @@
 import joi from 'joi'
 import { parties, offices } from '../database';
+
 const createParty = (req, res) => {
      const schema = {
      name: joi.string()
@@ -8,6 +9,10 @@ const createParty = (req, res) => {
        hqAddress: joi.string()
         .min(1)
         .required(),
+        logoUrl: joi
+        .string()
+        .min(1)
+        .required()
      };
     const result = joi.validate(req.body, schema);
 

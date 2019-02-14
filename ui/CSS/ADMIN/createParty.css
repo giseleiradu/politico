@@ -61,9 +61,8 @@ li a:hover{
 .signup{
     width: 100%;
     background: #294C8E;
-    height: 100%;
-    padding-top: 4%;
-
+    height: 95%;
+    padding-top: 2%;
 }
 .formdiv{
     background: #ffffff;
@@ -71,16 +70,16 @@ li a:hover{
     margin: auto;
     border: #ffffff 1px solid;
     border-radius: 8px;
-    padding-bottom: 2%;
+    height: 95%;
 }
 .formcontainer{
 
-    width: 80%;
-    margin: auto;
-    padding: 5% 0% 5% 0%;
-
+    width: 100%;
+    margin-left: 10%;
+    padding: 3% 0% 5% 0%;
 
 }
+
  input{
     height: 40px;
     border-radius: 8px;
@@ -93,52 +92,47 @@ li a:hover{
     overflow: hidden;
 }
 .fname,.pass{
-    width: 40%;
-    float: left;
+    width: 70%;
+    /* float: left; */
+    align-items:  center;
+
 }
-/* .fname input,.username input, .pass input, .confirm input,.id input,.address input{
+.fname input,.username input, .pass input, .confirm input,.id input,.address input{
     width: 100%;
-} */
+}
 .confirm,.username{
     width: 40%;
     float: right;
 }
-.id{
-    width:40%;
+/* .id{
+    width:55%;
     float: left;
-}
+} */
 .address{
     float: right;
-    width: 40%;
+    width: 35%;
 }
 
 .enter{
-    width: 50%;
+    width: 20%;
     float: left;
+    margin-right: 7%;
 }
-.enter a,.cancel a{
+
+.enter a{
     text-decoration: none;
     color: #000000;
-    padding: 15px 45px;
-    margin-top: 40%;
+    padding: 15px 35px;
+    /* margin-top: 40%; */
     border-radius: 8px;
 }
-.cancel{
-    width: 50%;
-    float: right;
-}
+
 
 .buttons{
-    /* text-align: center; */
-    margin-top: 5%;
+
+    margin-top: 2%;
 }
-.enter a{
+.enter a, .edit a, .delete a{
     background: #ec4e4e;
 
-}
-.cancel a{
-    background: #ec4e4e;
-}
-.enter a:hover,.cancel a:hover{
-   background: #e97070;
 }

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Parties</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../CSS/parties.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <header class="header-container">
+        <div class="navbar">
+            <li><img src="../IMAGES/logo.png" /> </li>
+            <ul>
+                <li ><a href="index.html">HOME</a></li>
+                <li class="current"><a href="parties.html">PARTIES</a></li>
+                <li ><a href="candidates.html">CANDIDATES</a></li>
+                <li><a href="signin.html">LOGOUT</a></li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <div class="choices">
+            <div class="text">PARTIES</div>
+            <div class="ishyaka">
+              <!-- <h3>FPR</h3> -->
+            <div class="candicate">
+                <div id="partyname"><p>USHINDI1</p></div>
+                <img src="../IMAGES/voteicon.png" alt="" id="image">
+                <div id="partylocation"><p>Location: KG 45 AVE KACYIRU RWANDA</p></div>
+                <div class="buttons edit">
+                        <div class="enter">
+                            <a href="../signin.html">EDIT</a>
+                        </div>
+                </div>
+                <div class="buttons delete">
+                        <div class="enter">
+                            <a href="../signin.html">DELETE</a>
+                        </div>
+                </div>
+
+            </div>
+            <div class="candicate marginalized">
+                    <div id="partyname"><p>USHINDI2</p></div>
+                    <hr>
+                    <img src="../IMAGES/voteicon.png" alt="" id="image">
+                    <div id="partylocation"><p>Location: KG 45 AVE KACYIRU RWANDA</p></div>
+                    <div class="buttons edit">
+                            <div class="enter">
+                                <a href="../signin.html">EDIT</a>
+                            </div>
+                    </div>
+                    <div class="buttons delete">
+                            <div class="enter">
+                                <a href="../signin.html">DELETE</a>
+                            </div>
+                    </div>
+            </div>
+            <div class="candicate marginalized">
+                    <div id="partyname"><p>USHINDI3</p></div>
+                    <img src="../IMAGES/voteicon.png" alt="" id="image">
+                    <div id="partylocation"><p>Location: KG 45 AVE KACYIRU RWANDA</p></div>
+                    <div class="buttons edit">
+                            <div class="enter">
+                                <a href="../signin.html">EDIT</a>
+                            </div>
+                    </div>
+                    <div class="buttons delete">
+                            <div class="enter">
+                                <a href="../signin.html">DELETE</a>
+                            </div>
+                    </div>
+            </div>
+            <div class="candicate marginalized">
+                    <div id="partyname"><p>USHINDI4</p></div>
+                    <img src="../IMAGES/voteicon.png" alt="" id="image">
+                    <div id="partylocation"><p>Location: KG 45 AVE KACYIRU RWANDA</p></div>
+                    <div class="buttons edit" class="popup" onclick="myFunction()">
+                            <div class="enter">
+                                <a href="#">EDIT</a>
+                            </div>
+                    </div>
+                    <div class="buttons delete" class="popup" onclick="myFunction()">
+                            <div class="enter">
+                                <a href="#">DELETE</a>
+                            </div>
+                    </div>
+            </div>
+
+            <div class="popup" onclick="myFunction()">
+              <span class="popuptext" id="myPopup">
+                <div class="formdiv">
+                    <div class="text">CREATE PARTY</div>
+                    <div class="formcontainer">
+                      <div class="lft">
+                        <div class="names">
+                            <div class="fname pname">
+                                <label for="first name" aria-required="true">PARTY NAME</label></br>
+                                <input type="text" id="fname" >
+                            </div>
+                            <div class="fname pheadquarter">
+                                <label for="username">HEADQUARTERS ADDRESS</label></br>
+                                <input type="text" id="username">
+                            </div>
+                            <div class="fname plogo">
+                                <label for="username">LOGO URL</label></br>
+                                <input type="url" id="username">
+                            </div>
+                        </div>
+                        <div class="identities">
+
+                        <div class="buttons">
+                                <div class="enter">
+                                    <a href="../signin.html">ADD</a>
+                                </div>
+                        </div>
+                        <div class="buttons">
+                                <div class="edit">
+                                    <a href="#l">Edit Party</a>
+                                </div>
+                        </div>
+                        <div class="buttons">
+                                <div id="del" class="delete" onclick="confam()">
+                                    <a href="#">Delete Party</a>
+                                </div>
+                        </div>
+
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </div>
+
+            <script>
+          // When the user clicks on <div>, open the popup
+          function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+          }
+          </script>
+          </div>
+
+            <div class="vote">
+                <a href="vote.html">vote>>>></a>
+            </div>
+
+        </div>
+    </section>
+
+
+</body>
+</html>
