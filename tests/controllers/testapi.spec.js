@@ -26,7 +26,7 @@ describe(`GET /api/v1/parties/id`, () => {
   it('should get a specific partie ', done => {
     chai
       .request(server)
-      .get("/api/v1/parties/2")
+      .get(`/api/v1/parties/${dummyParties2.id}`)
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');

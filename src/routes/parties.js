@@ -16,7 +16,6 @@ const entry = '/parties';
 // // /**** GET ALL ENTITIES ***/
 
 router.get(`${entry}`, getAllParties);
-router.get('/offices', getAllOffices);
 
 // // /**** CREATE THE ENTITY /
 
@@ -26,7 +25,6 @@ router.post('/offices', createParty);
 /**** GET THE ENTITY BY ID **********/
 
 router.get(`${entry}/:id`, getParty);
-router.get('/offices/:id', getOffice);
 
 // // /**** UPDATE THE ENTITY /
 
