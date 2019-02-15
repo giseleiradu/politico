@@ -2,6 +2,7 @@ import joi from 'joi'
 import { parties, offices } from '../database';
 
 const createParty = (req, res) => {
+
      const schema = {
      name: joi.string()
         .min(1)
@@ -38,6 +39,7 @@ const createParty = (req, res) => {
 
 
 const createOffice = (req, res) => {
+    console.log(req.body);
      const schema = {
      type: joi.string()
         .min(1)
@@ -54,7 +56,7 @@ const createOffice = (req, res) => {
       res.status(400).send(
         {
           status: 400,
-          message: result.error.details[0].message
+          message: result1.error.details[0].message
         });
       return;
    }

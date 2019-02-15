@@ -49,25 +49,25 @@ describe(`GET /api/v1/parties/id`, () => {
   //   });
   });
 
-  // describe('POST parties', () => {
-  //   it('it should return a valid object', done => {
-  //     chai
-  //       .request(server)
-  //       .post('/api/v1/parties/')
-  //       .send(dummyParties1)
-  //       .end((err, res) => {
-  //         res.should.have.status(201);
-  //         res.body.should.have.property('name').be.a('string', 'Expected id to be a string');
-  //         res.body.should.have.property('hqAddress');
-  //         res.body.hqAddress.should.be.a(
-  //           'string',
-  //           'Expected the hqAddress to be a string',
-  //         );
-  //         res.body.should.have.property('logoUrl').be.a('string', 'Expected the logo URL to be a string');
-  //         done();
-  //       });
-  //   });
-  // });
+  describe('POST parties', () => {
+    it('it should return a valid object', done => {
+      chai
+        .request(server)
+        .post('/api/v1/parties/')
+        .send(dummyParties1)
+        .end((err, res) => {
+          res.should.have.status(201);
+          res.body.should.have.property('name').be.a('string', 'Expected id to be a string');
+          res.body.should.have.property('hqAddress');
+          res.body.hqAddress.should.be.a(
+            'string',
+            'Expected the hqAddress to be a string',
+          );
+          res.body.should.have.property('logoUrl').be.a('string', 'Expected the logo URL to be a string');
+          done();
+        });
+    });
+  });
 
   describe('GET /offices', () => {
     it('should get all the offices', done => {

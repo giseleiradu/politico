@@ -1,16 +1,15 @@
 const parties = [
-  {
-    id: 1,
-    name: 'RPF',
-    hqAddress: 'Kigali',
-    logoUrl: '',
-  },
-  {
-    id: 2,
-    name: 'RPF',
-    hqAddress: 'Kigali',
-    logoUrl: '',
-  },
+  // {
+  //   name: 'RPF',
+  //   hqAddress: 'Kigali',
+  //   logoUrl: '',
+  // },
+  // {
+  //   id: 2,
+  //   name: 'RPF',
+  //   hqAddress: 'Kigali',
+  //   logoUrl: '',
+  // },
 ];
 const user = [
   // {
@@ -25,21 +24,21 @@ const user = [
   // },
 ];
 const offices = [
-  {
-    id: 1,
-    type: 'federal',
-    name: 'federal bureau',
-  },
-  {
-    id: 2,
-    type: 'federal',
-    name: 'federal bureau',
-  },
-  {
-    id: 3,
-    type: 'federal',
-    name: 'federal bureau',
-  },
+  // {
+  //
+  //   type: 'federal',
+  //   name: 'federal bureau',
+  // },
+  // {
+  //   id: 2,
+  //   type: 'federal',
+  //   name: 'federal bureau',
+  // },
+  // {
+  //   id: 3,
+  //   type: 'federal',
+  //   name: 'federal bureau',
+  // },
 ];
 const candidates = [
   // {
