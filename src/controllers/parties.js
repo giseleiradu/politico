@@ -98,9 +98,23 @@ const updateParty = (req, res) => {
     status: 404,
     message: 'invalid id'
   });
-
-  return res.status(200).send({...req.body });
+  parties.push(party);
+  res.status(200).send({id:party.id, ...req.body,createdOn: new Date()
+  });
 };
+
+
+// const party = { id:p.id, ...req.body, createdOn: new Date() };
+// parties.push(party);
+// return res.send(
+//   {
+//     "status": 201,
+//     "data": [ofice]
+//   }
+//   );
+
+
+
 const deleteParty = (req, res) => {
   const { id } = req.params;
   const party = parties.find(p => p.id === parseInt(id));
