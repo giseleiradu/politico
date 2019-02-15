@@ -1,9 +1,11 @@
+
 body{
     padding: 0;
     margin:0;
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
 }
+/*Header styles*/
 li img{
     width: 20%;
     margin: 20px 0px 0px 20px;
@@ -46,71 +48,101 @@ li a:hover{
     color: #ffffff;
 }
 
-/* Section login*/
-.image img{
-    width: 50%;
-    float: left; 
-}
-.voteSignin{
-    width: 50%;
-    float: right;
+/* signup division */
+.text{
+    padding: 4%;
+    font-size: 22px;
+    font-weight: bolder;
     text-align: center;
-    padding: 1.8% 0% 1% 0%;
-    background-image:linear-gradient(to right ,#182478 55%,#ffffff 75%)
+    background: rgb(68, 98, 155);
+    border-radius: 8px 8px 0px 0px;
+    color: #ffffff;
 }
+.signup{
+    width: 100%;
+    background: #294C8E;
+    height: 100%;
+    padding-top: 4%;
+
+}
+.formdiv{
+    background: #ffffff;
+    width: 70%;
+    margin: auto;
+    border: #ffffff 1px solid;
+    border-radius: 8px;
+    padding-bottom: 2%;
+}
+.formcontainer{
+
+    width: 80%;
+    margin: auto;
+    padding: 5% 0% 5% 0%;
 
 
-input{
-    padding-left: 20px;
-    width: 60%;
+}
+ input{
     height: 40px;
     border-radius: 8px;
     border: rgb(68, 98, 155) 1px solid;
     font-size: 16px;
     margin: 10px 0px 20px;
+    padding-left: 20px;
 }
-form{
-    margin-bottom: 20px;
+.names, .passes,.identities{
+    overflow: hidden;
+}
+.fname,.password{
+    width: 40%;
+    float: left;
+}
+
+.uname{
+  width: 70%;
+}
+/* .fname input,.username input, .pass input, .confirm input,.id input,.address input{
+    width: 100%;
+} */
+.confirm,.username{
+    width: 40%;
+    float: right;
+}
+.id{
+    width:40%;
+    float: left;
+}
+.address{
+    float: right;
+    width: 40%;
 }
 
 .enter{
     width: 50%;
     float: left;
 }
-.enter a,.cancel a{
+.enter a{
     text-decoration: none;
     color: #000000;
     padding: 15px 45px;
     margin-top: 40%;
     border-radius: 8px;
 }
-.cancel{
+/* .cancel{
     width: 50%;
     float: right;
-}
+} */
 
 .buttons{
-    text-align: center;
-    margin-top: 4%;
+    /* text-align: center; */
+    margin-top: 5%;
 }
 .enter a{
     background: #ec4e4e;
-    
+
 }
 .cancel a{
     background: #ec4e4e;
 }
 .enter a:hover,.cancel a:hover{
    background: #e97070;
-}
-
-.signup{
-    margin-top: 10%;
-
-}
-.signup a{
-    color: #ffffff;
-}
-.signup a:hover{
-    color: #6b6969;
 }
