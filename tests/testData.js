@@ -14,23 +14,28 @@ const dummyParties1 = [
   }
 ];
 
-// const offices = [
-//   {
-//     id: 1,
-//     type: 'federal',
-//     name: 'federal bureau',
-//   },
-//   {
-//     id: 2,
-//     type: 'federal',
-//     name: 'federal bureau',
-//   },
-//   {
-//     id: 3,
-//     type: 'federal',
-//     name: 'federal bureau',
-//   },
-// ];
-export { dummyParties1,dummyParties2
-  // , user, votes, offices, candidates, petition
-};
+const dummyOffice = [
+  {
+    type: 'federal',
+    name: 'federal bureau',
+  }
+];
+const dummyOffices = [
+  {
+    id: 1,
+    type: 'federal',
+    name: 'federal bureau',
+  },
+
+  {
+    id: 2,
+    type: 'federal',
+    name: 'federal bureau',
+  },
+  {
+    id: 3,
+    type: 'federal',
+    name: 'federal bureau',
+  },
+];
+export { dummyParties1,dummyParties2, dummyOffices, dummyOffice };

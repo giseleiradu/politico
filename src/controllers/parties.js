@@ -6,9 +6,7 @@ const createParty = (req, res) => {
      const schema = {
      name: joi.string()
         .min(1)
-        .required()
-        // .unique
-        ,
+        .required(),
        hqAddress: joi.string()
         .min(1)
         .required(),
@@ -43,9 +41,7 @@ const createOffice = (req, res) => {
      const schema = {
      type: joi.string()
         .min(1)
-        .required()
-        // .unique
-        ,
+        .required(),
        name: joi.string()
         .min(1)
         .required()
@@ -104,18 +100,6 @@ const updateParty = (req, res) => {
   res.status(200).send({id:party.id, ...req.body,createdOn: new Date()
   });
 };
-
-
-// const party = { id:p.id, ...req.body, createdOn: new Date() };
-// parties.push(party);
-// return res.send(
-//   {
-//     "status": 201,
-//     "data": [ofice]
-//   }
-//   );
-
-
 
 const deleteParty = (req, res) => {
   const { id } = req.params;
