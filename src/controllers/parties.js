@@ -32,7 +32,7 @@ const createParty = (req, res) => {
 
 
 const createOffice = (req, res) => {
-  console.log(req.body);
+
   const schema = {
     type: joi.string()
       .min(1)
@@ -50,6 +50,7 @@ const createOffice = (req, res) => {
     });
   }
   const office = { id: offices.length + 1, ...req.body, createdOn: new Date() };
+
   offices.push(office);
   return res.status(201).json({
     status: 201,

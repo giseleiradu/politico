@@ -52,7 +52,7 @@ section{
     padding: 2% 0%;
 }
 .choices{
-    width: 80%;
+    width: 90%;
     background: #ffffff;
     margin: auto;
     border: 1px #ffffff solid;
@@ -68,32 +68,58 @@ section{
     border-radius: 8px 8px 0px 0px;
     color: #ffffff;
 }
-#candicate{
-    width: 40%;
-    margin: 2% 3.2%;
+.ishyaka{
+  width: 100%;
+  height: 30%;
+  padding: 5%;
+  /* margin-bottom: 15%; */
+}
+.marginalized{
+    margin-left: 7%;
+}
+.candicate{
+    width: 15%;
+    height: 30%;
+    /* margin: 1% 2.2%; */
     text-align: center;
     border: rgb(68, 98, 155) 1px solid;
     border-radius: 8px;
     float: left;
     padding: 10px;
     overflow: hidden;
+    margin-bottom: 10%;
 }
 #partyname{
     text-transform: uppercase;
-    font-size: 30px;
+    font-size: 20px;
 }
-#candicate img{
+.candicate img{
+    width: 30%;
     border-radius:50%;
     border: #294C8E 1px solid;
 }
-#candidatetext{
+/* #candidatetext{
     font-style: italic;
-}
+} */
 
 
 .vote a{
     text-transform: uppercase;
     margin: 45%;
-    padding: 30px 0px;    
+    padding: 30px 0px;
 }
+.votefor button{
+  background-color: blue;
+}
+#submit{
+  width: 15%;
+  /* height: 20%; */
+  background: #294C8E;
+  color: #ffffff;
+  border: #294C8E 1px solid;
+  border-radius: 8%;
+  font-size: 25px;
+  text-decoration: none;
+  text-align: center;
 
+}
