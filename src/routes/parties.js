@@ -8,35 +8,37 @@ import {
   createParty,
   updateParty,
   deleteParty,
-  createOffice
+  createOffice,
+
 } from '../controllers/parties';
 
 const router = Router();
-const entry = '/parties';
 
-// // /**** GET ALL ENTITIES ***/
+// // /** GET ALL ENTITIES */
 
-router.get(`${entry}`, getAllParties);
-router.get(`/offices`, getAllOffices);
+router.get('/parties', getAllParties);
+router.get('/offices', getAllOffices);
 
-// // /**** CREATE THE ENTITY /
 
-router.post(`${entry}`, createParty);
+// // /** CREATE THE ENTITY /
+
+router.post('/parties', createParty);
+
 router.post('/offices', createOffice);
 
-/**** GET THE ENTITY BY ID **********/
+/* * GET THE ENTITY BY ID *** */
 
-router.get(`${entry}/:id`, getParty);
-router.get(`office/:id`, getOffice);
+router.get('/parties/:id', getParty);
+router.get('/offices/:id', getOffice);
 
-// // /**** UPDATE THE ENTITY /
+// // /** UPDATE THE ENTITY /
 
-router.patch(`${entry}/:id`, updateParty);
+router.patch('/parties/:id', updateParty);
 
 
-// // /**** DELETE THE ENTITY /
+// // /** DELETE THE ENTITY /
 
-router.delete(`${entry}/:id`, deleteParty);
+router.delete('/parties:id', deleteParty);
 
 
 export default router;
