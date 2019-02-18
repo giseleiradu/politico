@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/giseleiradu/politico.svg?branch=develop)](https://travis-ci.com/giseleiradu/politico)
+
 # politico
 
 ### Installing the project
