@@ -13,7 +13,7 @@ const router = Router();
 router.get('/parties', getAllParties);
 router.post('/parties', createParty);
 router.get('/parties/:id', getParty);
-router.patch('/parties/:id', updateParty);
+router.patch('/parties/:id/name', updateParty);
 router.delete('/parties/:id', deleteParty);
 
 export default router;

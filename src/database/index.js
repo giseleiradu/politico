@@ -1,5 +1,10 @@
 const parties = [
-
+  {
+  id: 1,
+   name:"FPR",
+   hqAddress: "Kigali",
+   logoUrl: "fpr.lion",
+ },
 ];
 const user = [
   {
