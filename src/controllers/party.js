@@ -49,8 +49,12 @@ const getParty = (req, res) => {
     data: [party],
   });
 };
-
 const updateParty = (req, res) => {
+  const schema = {
+    name: joi.string()
+      .min(1)
+      .required(),
+    }
   const { id } = req.params;
   const party = parties.find(p => p.id === parseInt(id, 10));
   if (!party) {
@@ -59,7 +63,15 @@ const updateParty = (req, res) => {
       message: 'invalid id',
     });
   }
-  parties.push(party);
+  const rslt = joi.validate(({ name:req.body.name, updatedOn: new Date()}), schema);
+  if (rslt.error) {
+    return res.status(400).json({
+      status: 400,
+      message: rslt.error.details[0].message,
+    });
+  }
+  parties.push(rslt);
+
   return res.status(200).json({ id: party.id, ...req.body, createdOn: new Date() });
 };
 

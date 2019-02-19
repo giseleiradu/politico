@@ -1,1 +1,1 @@
-web: cross-env NODE_ENV=production nodemon --exec babel-node ./src/server.js
+web: npm run server
