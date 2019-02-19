@@ -1,21 +1,11 @@
 const parties = [
   {
-  id: 1,
-   name:"FPR",
-   hqAddress: "Kigali",
-   logoUrl: "fpr.lion",
+
  },
 ];
 const user = [
   {
-    id: 1,
-    firstName: 'Gisele',
-    lastName: 'iradukunda',
-    otherName: 'Gigi',
-    email: 'gisele@gmail.com',
-    phoneNumber: '0788888888',
-    passportUrl: '',
-    isAdmin: true,
+
   },
 ];
 const offices = [

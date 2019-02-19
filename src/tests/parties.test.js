@@ -1,3 +1,5 @@
+// "db": "NODE_ENV=dev npm run createTables"
+
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
@@ -50,20 +52,20 @@ describe('Parties', () => {
         });
     });
   });
-  // describe('PATCH /api/v1/parties/:id/name', ()=>{
-  //   it('should update the name of a party', (done)=>{
-  //     chai.request(app)
-  //     .patch('api/v1/parties/1/name')
-  //     .send({
-  //       name: 'PL',
-  //     })
-  //     .end((err, res) => {
-  //       expect(res.status).to.equal(200);
-  //       expect(res.body.data.length).to.be.above(0);
-  //       done();
-  //     });
-  //   });
-  // });
+  describe('PATCH /api/v1/parties/:id/name', ()=>{
+    it('should update the name of a party', (done)=>{
+      chai.request(app)
+      .patch('/api/v1/parties/1/name')
+      .send({
+        name: 'PL',
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.data.length).to.be.above(0);
+        done();
+      });
+    });
+  });
   describe('DELETE /api/v1/parties/:id', () => {
     // test 1
     it('should return the deleted party', (done) => {
