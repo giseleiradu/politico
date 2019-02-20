@@ -54,7 +54,7 @@ const updateParty = (req, res) => {
     name: joi.string()
       .min(1)
       .required(),
-    }
+    };
   const { id } = req.params;
   const party = parties.find(p => p.id === parseInt(id, 10));
   if (!party) {
@@ -63,7 +63,7 @@ const updateParty = (req, res) => {
       message: 'invalid id',
     });
   }
-  const rslt = joi.validate(({ name:req.body.name, updatedOn: new Date()}), schema);
+  const rslt = joi.validate(({ name:req.body.name}), schema);
   if (rslt.error) {
     return res.status(400).json({
       status: 400,
