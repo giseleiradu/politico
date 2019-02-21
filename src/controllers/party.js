@@ -24,9 +24,8 @@ const createParty = async (req, res) => {
     });
   }
 
-  try {
     const text = `INSERT INTO
-            parties(name, "hdAddress", "logoUrl")
+            parties("name", "hdAddress", "logoUrl")
             VALUES($1, $2, $3)
             returning *`;
 
@@ -35,21 +34,19 @@ const createParty = async (req, res) => {
       req.body.hqAddress,
       req.body.logoUrl,
     ];
-
     const { rows } = await db.query(text, values);
-
+    console.log(rows);
     if (rows.length > 0) {
-      return res.status(201).json({
-        status: 201,
-        data: rows,
-      });
-    }
-  } catch (error) {
-    console.log(error);
-  }
-  return res.status(200).json({
-    status: 200,
-    error: 'Pary not created',
+      return res.status(201).json(
+        {
+          status: 201,
+          data: rows,
+        });
+        }
+
+  return res.status(400).json({
+    status: 400,
+    message: rows.error.details[0].message,
   });
 };
 
@@ -64,11 +61,14 @@ const getAllParties = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    return res.status(500).json({
+      status: 500,
+      message: error,
+    });
   }
   return res.status(200).json({
     status: 200,
-    error: 'No party found',
+    message: 'No party found',
   });
 };
 
