@@ -1,7 +1,8 @@
 import joi from 'joi';
 import { offices } from '../database';
+import db from '../database/db';
 
-const createOffice = (req, res) => {
+const createOffice = async (req, res) => {
   console.log(req.body);
   const schema = {
     type: joi.string()
@@ -11,39 +12,77 @@ const createOffice = (req, res) => {
       .min(1)
       .required(),
   };
-  const result1 = joi.validate(req.body, schema);
+  const result = joi.validate(req.body, schema);
 
-  if (result1.error) {
+  if (result.error) {
     return res.status(400).json({
       status: 400,
-      message: result1.error.details[0].message,
+      message: result.error.details[0].message,
     });
   }
-  const office = { id: offices.length + 1, ...req.body, createdOn: new Date() };
-  offices.push(office);
-  return res.status(201).json({
-    status: 201,
-    data: [office],
-  });
-};
+  try {
+    const text = `INSERT INTO
+            offices(type, name)
+            VALUES($1, $2)
+            returning *`;
 
-const getAllOffices = (req, res) => res.status(200).json({
-  status: 200,
-  data: offices,
-});
+    const values = [
+      req.body.name,
+      req.body.type,
+    ];
 
-const getOffice = (req, res) => {
-  const { id } = req.params;
-  const office = offices.find(f => f.id === parseInt(id, 10));
-  if (!office) {
-    res.status(404).json({
-      status: 404,
-      message: 'the office with a given id does not exist',
-    });
+    const { rows } = await db.query(text, values);
+
+    if (rows.length > 0) {
+      return res.status(201).json({
+        status: 201,
+        data: rows,
+      });
+    }
+  } catch (error) {
+    console.log(error);
   }
   return res.status(200).json({
     status: 200,
-    data: [office],
+    message: 'Office not created',
+  });
+};
+
+const getAllOffices = async (req, res) => {
+  try {
+    const { rows } = await db.query('SELECT * FROM offices');
+
+    if (rows.length > 0) {
+      return res.status(200).json({
+        status: 200,
+        data: rows,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  return res.status(200).json({
+    status: 200,
+    office: 'No office found',
+  });
+};
+
+const getOffice = async (req, res) => {
+  try {
+    const { rows } = await db.query('SELECT * FROM offices WHERE id=$1', [req.params.id]);
+
+    if (rows.length > 0) {
+      return res.status(200).json({
+        status: 200,
+        data: rows,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  return res.status(200).json({
+    status: 200,
+    message: 'Office not found',
   });
 };
 
