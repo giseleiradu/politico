@@ -81,4 +81,4 @@ const create = () => {
   });
 };
 export { create, pool };
-require('make-runnable');
+import 'make-runnable';

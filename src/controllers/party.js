@@ -1,7 +1,8 @@
 import joi from 'joi';
 import { parties } from '../database';
+import db from '../database/db';
 
-const createParty = (req, res) => {
+const createParty = async (req, res) => {
   const schema = {
     name: joi.string()
       .min(1)
@@ -22,74 +23,133 @@ const createParty = (req, res) => {
       message: result.error.details[0].message,
     });
   }
-  const party = { id: parties.length + 1, ...req.body, createdOn: new Date() };
-  parties.push(party);
-  return res.status(201).json({
-    status: 201,
-    data: [party],
+
+  try {
+    const text = `INSERT INTO
+            parties(name, "hdAddress", "logoUrl")
+            VALUES($1, $2, $3)
+            returning *`;
+
+    const values = [
+      req.body.name,
+      req.body.hqAddress,
+      req.body.logoUrl,
+    ];
+
+    const { rows } = await db.query(text, values);
+
+    if (rows.length > 0) {
+      return res.status(201).json({
+        status: 201,
+        data: rows,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  return res.status(200).json({
+    status: 200,
+    error: 'Pary not created',
   });
 };
 
-const getAllParties = (req, res) => res.status(200).json({
-  status: 200,
-  data: parties,
-});
+const getAllParties = async (req, res) => {
+  try {
+    const { rows } = await db.query('SELECT * FROM parties');
 
-const getParty = (req, res) => {
-  const { id } = req.params;
-  const party = parties.find(p => p.id === parseInt(id, 10));
-  if (!party) {
-    return res.status(404).json({
-      status: 404,
-      message: 'the party with a given id does not exist',
+    if (rows.length > 0) {
+      return res.status(200).json({
+        status: 200,
+        data: rows,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  return res.status(200).json({
+    status: 200,
+    error: 'No party found',
+  });
+};
+
+const getParty = async (req, res) => {
+  try {
+    const { rows } = await db.query('SELECT * FROM parties WHERE id=$1', [req.params.id]);
+
+    if (rows.length > 0) {
+      return res.status(200).json({
+        status: 200,
+        data: rows,
+      });
+    }
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      message: error,
     });
   }
   return res.status(200).json({
     status: 200,
-    data: [party],
+    message: 'Party not found',
   });
 };
-const updateParty = (req, res) => {
+const updateParty = async (req, res) => {
   const schema = {
     name: joi.string()
       .min(1)
       .required(),
-    };
-  const { id } = req.params;
-  const party = parties.find(p => p.id === parseInt(id, 10));
-  if (!party) {
-    return res.status(404).json({
-      status: 404,
-      message: 'invalid id',
-    });
-  }
-  const rslt = joi.validate(({ name:req.body.name}), schema);
-  if (rslt.error) {
-    return res.status(400).json({
-      status: 400,
-      message: rslt.error.details[0].message,
-    });
-  }
-  parties.push(rslt);
+  };
+  try{
+    const { rows } = await db.query(`SELECT * FROM parties WHERE id=$1`, [req.params.id]);
+    if (!rows) {
+      return res.status(404).json({
+        status: 404,
+        message: 'invalid id',
+      });
+    }
+    const rslt = joi.validate(({ name: req.body.name }), schema);
+    if (rslt.error) {
+      return res.status(400).json({
+        status: 400,
+        message: rslt.error.details[0].message,
+      });
+    }
 
-  return res.status(200).json({ id: party.id, ...req.body, createdOn: new Date() });
+    const rows1 = await db.query('UPDATE parties SET name=$1 WHERE id=$2 returning *', [req.body.name, req.params.id]);
+    return res.status(200).json(
+      {
+        status: 200,
+        data: [rows1.rows[0]],
+      });
+  }catch(error){
+      return res.status(500).json({
+        status: 500,
+        message: error,
+      });
+  }
 };
 
-const deleteParty = (req, res) => {
-  const { id } = req.params;
-  const party = parties.find(p => p.id === parseInt(id, 10));
-  if (!party) {
-    return res.status(404).json({
-      status: 404,
-      message: 'invalid id',
-    });
+const deleteParty = async(req, res) => {
+  try{
+    const { rows } = await db.query(`SELECT * FROM parties WHERE id=$1`, [req.params.id]);
+    if (!rows) {
+      return res.status(404).json({
+        status: 404,
+        message: 'invalid id',
+      });
+    }
+    const rows1 = await db.query('DELETE FROM parties WHERE id=$1 returning *', [req.params.id]);
+    return res.status(200).json(
+      {
+        status: 200,
+        data: [rows1.rows[0]],
+      });
+  }catch(error){
+      return res.status(500).json({
+        status: 500,
+        message: error,
+      });
   }
-  const index = parties.indexOf(party);
-  parties.splice(index, 1);
-  return res.status(200).json({
-    status: 200,
-    data: [party],
-  });
 };
 
 export {
