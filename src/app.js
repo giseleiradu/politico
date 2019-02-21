@@ -2,12 +2,14 @@ import express from 'express';
 import morgan from 'morgan';
 import middlewares from './middlewares';
 
-const server = express();
-server.use(morgan('dev'));
-server.use(express.json());
+const app = express();
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: false,
+}));
+// Passing all of our APIs config/endpoints to our express app to use them
 
-// Passing all of our APIs config/endpoints to our express server to use them
+middlewares(app);
 
-middlewares(server);
-
-export default server;
+export default app;

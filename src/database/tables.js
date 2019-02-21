@@ -1,5 +1,5 @@
-import pg from "pg";
-import dotenv from "dotenv";
+import pg from 'pg';
+import dotenv from 'dotenv';
 
 dotenv.config();
 const config = {
@@ -7,81 +7,78 @@ const config = {
   user: process.env.DB_USER,
   database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT
+  port: process.env.DB_PORT,
 };
 
 const pool = new pg.Pool(config);
-pool.on("connect", () => {
-  console.log("Database connection successful");
+pool.on('connect', () => {
+  console.log('Database connection successful');
 });
 
 const create = () => {
+  const usersTable = `CREATE TABLE IF NOT EXISTS
+                  users(
+                    id SERIAL PRIMARY KEY,
+                    "firstName" VARCHAR(100) UNIQUE NOT NULL,
+                    "lastName" VARCHAR(100),
+                    "otherName" VARCHAR(100),
+                    email VARCHAR(100) UNIQUE NOT NULL,
+                    "phoneNumber" VARCHAR(100) UNIQUE NOT NULL,
+                    "passportUrl" VARCHAR(100) UNIQUE,
+                    password TEXT NOT NULL,
+                    "isAdmin" BOOLEAN DEFAULT false
+                  )`;
   const partiesTable = `CREATE TABLE IF NOT EXISTS
                   parties(
                     id SERIAL PRIMARY KEY,
-                    pName VARCHAR(100) NOT NULL UNIQUE,
-                    hdAddress VARCHAR(100) NOT NULL,
-                    logoUrl VARCHAR(100) NOT NULL,
-                    createdDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                    updatedDate TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+                    name VARCHAR(100) NOT NULL UNIQUE,
+                    "hdAddress" VARCHAR(100) NOT NULL,
+                    "logoUrl" VARCHAR(100) NOT NULL
                   )`;
 
   const officesTable = `CREATE TABLE IF NOT EXISTS
                   offices(
                     id SERIAL PRIMARY KEY,
-                    oName NOT NULL,
-                    type VARCHAR(100) UNIQUE NOT NULL,
-                    createdDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-                  )`;
-  const usersTable = `CREATE TABLE IF NOT EXISTS
-                  users(
-                    id SERIAL PRIMARY KEY,
-                    firstName VARCHAR(100) UNIQUE NOT NULL,
-                    lastName VARCHAR(100),
-                    otherName VARCHAR(100),
-                    email VARCHAR(100) UNIQUE NOT NULL,
-                    phoneNumber VARCHAR(100) UNIQUE NOT NULL,
-                    passportUrl VARCHAR(100) UNIQUE,
-                    isAdmin BOOLEAN DEFULT false,
-                    createdDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+                    type VARCHAR(100) NOT NULL,
+                    name VARCHAR(100) NOT NULL
                   )`;
   const candidatesTable = `CREATE TABLE IF NOT EXISTS
                   candidates(
                     id SERIAL PRIMARY KEY,
-                    office VARCHAR(100) NOT NULL,
-                    party VARCHAR(100) NOT NULL,
-                    createdDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+                    "officeId" INT NOT NULL REFERENCES offices(id) ON DELETE CASCADE ON UPDATE CASCADE,
+                    "partyId" INT NOT NULL REFERENCES parties(id) ON DELETE CASCADE ON UPDATE CASCADE,
+                    "candidateId" INT NOT NULL REFERENCES candidates(id) ON DELETE CASCADE ON UPDATE CASCADE
                   )`;
   const votesTable = `CREATE TABLE IF NOT EXISTS
                   vote(
                     id SERIAL PRIMARY KEY,
-                    createdDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                    createdBy VARCHAR(100) NOT NULL,
-                    office VARCHAR(100) NOT NULL,
-                    candidate INT NOT NULL
+                    "createdOn" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    "createdBy" INT NOT NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+                    "officeId" INT NOT NULL REFERENCES offices(id) ON DELETE CASCADE ON UPDATE CASCADE,
+                    "candidateId" INT NOT NULL REFERENCES candidates(id) ON DELETE CASCADE ON UPDATE CASCADE
                   )`;
-const petitionsTable = `CREATE TABLE IF NOT EXISTS
+  const petitionsTable = `CREATE TABLE IF NOT EXISTS
                 petition(
                   id SERIAL PRIMARY KEY,
-                  createdDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                  createdBy VARCHAR(100) NOT NULL,
-                  office VARCHAR(100) NOT NULL,
-                  candidate INT NOT NULL
+                  "createdOn" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                  "createdBy" INT NOT NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+                  "officeId" INT NOT NULL REFERENCES offices(id) ON DELETE CASCADE ON UPDATE CASCADE,
+                  body TEXT NOT NULL
                 )`;
   pool
-    .query(`${partiesTable}; ${petitionsTable}; ${votesTable}; ${candidatesTable}; ${usersTable}; `)
-    .then(res => {
+    .query(`${usersTable}; ${partiesTable}; ${officesTable}; ${candidatesTable}; ${votesTable}; ${petitionsTable}`)
+    .then((res) => {
       console.log(res);
       pool.end();
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       pool.end();
     });
-  pool.on("remove", () => {
-    console.log("Removed");
+  pool.on('remove', () => {
+    console.log('Removed');
     process.exit(0);
   });
 };
 export { create, pool };
-require("make-runnable");
+import'make-runnable';
