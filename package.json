@@ -8,7 +8,7 @@
   "scripts": {
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "test": "nyc --reporter=text --reporter=lcov mocha --timeout 25000 --require babel-register ./src/tests/index.js --exit ",
-    "server": "cross-env NODE_ENV=dev nodemon --exec babel-node ./src/index.js",
+    "server": "npm run createTables && cross-env NODE_ENV=dev nodemon --exec babel-node ./src/index.js",
     "createTables": "babel-node ./src/database/tables create"
   },
   "engines": {

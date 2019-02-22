@@ -3,6 +3,12 @@ import { offices } from '../database';
 import db from '../database/db';
 
 const createOffice = async (req, res) => {
+
+  if (req.userType !== 'admin') {
+  return res.status(401).json({
+    error: 'unauthorized access',
+  });
+}
   console.log(req.body);
   const schema = {
     type: joi.string()
@@ -86,21 +92,32 @@ const getOffice = async (req, res) => {
   });
 };
 
-const deleteOffice = (req, res) => {
-  const { id } = req.params;
-  const office = offices.find(p => p.id === parseInt(id, 10));
-  if (!office) {
-    return res.status(404).json({
-      status: 404,
-      message: 'invalid id',
-    });
-  }
-  const index = offices.indexOf(office);
-  offices.splice(index, 1);
-  return res.status(200).json({
-    status: 200,
-    data: [office],
+const deleteOffice = async (req, res) => {
+  if (req.userType !== 'admin') {
+  return res.status(401).json({
+    error: 'unauthorized access',
   });
+}
+  try{
+    const { rows } = await db.query(`SELECT * FROM offices WHERE id=$1`, [req.params.id]);
+    if (!rows) {
+      return res.status(404).json({
+        status: 404,
+        message: 'invalid id',
+      });
+    }
+    const rows1 = await db.query('DELETE FROM offices WHERE id=$1 returning *', [req.params.id]);
+    return res.status(200).json(
+      {
+        status: 200,
+        data: [rows1.rows[0]],
+      });
+  }catch(error){
+      return res.status(500).json({
+        status: 500,
+        message: error,
+      });
+  }
 };
 
 export {

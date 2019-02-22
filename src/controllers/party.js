@@ -3,6 +3,11 @@ import { parties } from '../database';
 import db from '../database/db';
 
 const createParty = async (req, res) => {
+  if (req.userType !== 'admin') {
+  return res.status(401).json({
+    error: 'unauthorized access',
+  });
+}
   const schema = {
     name: joi.string()
       .min(1)
@@ -94,6 +99,11 @@ const getParty = async (req, res) => {
   });
 };
 const updateParty = async (req, res) => {
+  if (req.userType !== 'admin') {
+  return res.status(401).json({
+    error: 'unauthorized access',
+  });
+}
   const schema = {
     name: joi.string()
       .min(1)
@@ -130,6 +140,11 @@ const updateParty = async (req, res) => {
 };
 
 const deleteParty = async(req, res) => {
+  if (req.userType !== 'admin') {
+  return res.status(401).json({
+    error: 'unauthorized access',
+  });
+}
   try{
     const { rows } = await db.query(`SELECT * FROM parties WHERE id=$1`, [req.params.id]);
     if (!rows) {

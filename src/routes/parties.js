@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import checkToken from '../middlewares/checkToken';
 
 import {
   getAllParties,
@@ -10,10 +11,10 @@ import {
 
 const router = Router();
 
-router.get('/parties', getAllParties);
-router.post('/parties', createParty);
-router.get('/parties/:id', getParty);
-router.patch('/parties/:id/name', updateParty);
-router.delete('/parties/:id', deleteParty);
+router.get('/parties', checkToken, getAllParties);
+router.post('/parties', checkToken, createParty);
+router.get('/parties/:id', checkToken, getParty);
+router.patch('/parties/:id/name', checkToken, updateParty);
+router.delete('/parties/:id', checkToken, deleteParty);
 
 export default router;

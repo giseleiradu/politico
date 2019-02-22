@@ -1,8 +1,9 @@
 import express, { Router } from 'express';
-// import all of your routes from their files
+
 import partiesRoute from './parties';
 import officesRoute from './offices';
 import usersRoute from './users';
+import candidateRoute from './candidate';
 
 const routes = Router();
 
@@ -19,5 +20,6 @@ entryPoint.get('/', (req, res) => {
 routes.use(entryPoint, partiesRoute);
 routes.use(entryPoint, officesRoute);
 routes.use(entryPoint, usersRoute);
+routes.use(entryPoint, candidateRoute);
 
 export default routes;
