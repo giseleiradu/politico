@@ -24,8 +24,10 @@ export default server => {
   /** ********* Error handling ********************** */
 
   server.use((req, res) =>
-    res.status(404).json({ message: `invalid url ${req.url}` })
+    res.status(404).json(
+      {
+        status: 404,
+        message: `invalid url ${req.url}`
+     })
   );
 };
-
-

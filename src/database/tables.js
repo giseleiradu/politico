@@ -10,7 +10,7 @@ const config = {
   port: process.env.DB_PORT,
 };
 
-const pool = new pg.Pool(config);
+const pool = new pg.Pool({connectionString: process.env.DATABASE_URL});
 pool.on('connect', () => {
   console.log('Database connection successful');
 });
@@ -45,9 +45,9 @@ const create = () => {
   const candidatesTable = `CREATE TABLE IF NOT EXISTS
                   candidates(
                     id SERIAL PRIMARY KEY,
-                    "officeId" INT NOT NULL REFERENCES offices(id) ON DELETE CASCADE ON UPDATE CASCADE,
-                    "partyId" INT NOT NULL REFERENCES parties(id) ON DELETE CASCADE ON UPDATE CASCADE,
-                    "candidateId" INT NOT NULL REFERENCES candidates(id) ON DELETE CASCADE ON UPDATE CASCADE
+                    "officeid" INT NOT NULL REFERENCES offices(id) ON DELETE CASCADE ON UPDATE CASCADE,
+                    "partyid" INT NOT NULL REFERENCES parties(id) ON DELETE CASCADE ON UPDATE CASCADE,
+                    "candidateid" INT NOT NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
                   )`;
   const votesTable = `CREATE TABLE IF NOT EXISTS
                   vote(
@@ -68,11 +68,11 @@ const create = () => {
   pool
     .query(`${usersTable}; ${partiesTable}; ${officesTable}; ${candidatesTable}; ${votesTable}; ${petitionsTable}`)
     .then((res) => {
-      console.log(res);
+      console.log("then ",res);
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      console.log("catch ",err);
       pool.end();
     });
   pool.on('remove', () => {
@@ -81,5 +81,4 @@ const create = () => {
   });
 };
 export { create, pool };
-
-import 'make-runnable';
+require('make-runnable');

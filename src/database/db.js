@@ -10,7 +10,9 @@ const config = {
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
 };
-const pool = new pg.Pool(config);
+const pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL
+});
 pool.on('connect', () => {
   console.log('Database connection successful');
 });
