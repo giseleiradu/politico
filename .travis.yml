@@ -7,3 +7,7 @@ cache:
 script: npm test
 after_success:
   - npm run coveralls
+env:
+  - DATABASE_URL: postgres://travis@localhost:5432/travis
+service:
+  - postgresql
